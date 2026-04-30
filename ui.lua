@@ -84,9 +84,9 @@ function Menu.UpdateCategoriesFromTopTab()
 end
 
 Menu.Banner = {
-    enabled = true,
-    imageUrl = "https://i.imgur.com/0wsZY4t.png",
-    height = 100
+    enabled = false,
+    imageUrl = "",
+    height = 80
 }
 
 Menu.bannerTexture = nil
@@ -136,73 +136,80 @@ function Menu.LoadBannerTexture(url)
 end
 
 Menu.Colors = {
-    HeaderPink = { r = 148, g = 0, b = 211 },
-    SelectedBg = { r = 148, g = 0, b = 211 },
-    TextWhite = { r = 255, g = 255, b = 255 },
-    BackgroundDark = { r = 0, g = 0, b = 0 },
-    FooterBlack = { r = 0, g = 0, b = 0 }
+    HeaderPink = { r = 110, g = 60, b = 220 },
+    SelectedBg = { r = 110, g = 60, b = 220 },
+    TextWhite = { r = 230, g = 230, b = 255 },
+    BackgroundDark = { r = 10, g = 11, b = 18 },
+    FooterBlack = { r = 8, g = 9, b = 15 }
 }
 
-Menu.CurrentTheme = "Blue"
+Menu.CurrentTheme = "Arcane"
 
 function Menu.ApplyTheme(themeName)
     if not themeName or type(themeName) ~= "string" then
-        themeName = "Blue"
+        themeName = "Arcane"
     end
-    
 
     local themeLower = string.lower(themeName)
     Menu.CurrentTheme = themeName
-    
-    if themeLower == "blue" or themeLower == "red" then
-        Menu.Colors.HeaderPink = { r = 0, g = 221, b = 255 }
-        Menu.Colors.SelectedBg = { r = 0, g = 221, b = 255 }
-        Menu.Banner.imageUrl = "https://i.imgur.com/0wsZY4t.png"
-        Menu.CurrentTheme = "Blue"
-    elseif themeLower == "purple" then
-        Menu.Colors.HeaderPink = { r = 148, g = 0, b = 211 }
-        Menu.Colors.SelectedBg = { r = 148, g = 0, b = 211 }
-        Menu.Banner.imageUrl = "https://i.imgur.com/0wsZY4t.png"
-        Menu.CurrentTheme = "Purple"
-    elseif themeLower == "gray" then
-        Menu.Colors.HeaderPink = { r = 128, g = 128, b = 128 }
-        Menu.Colors.SelectedBg = { r = 128, g = 128, b = 128 }
-        Menu.Banner.imageUrl = "https://i.imgur.com/0wsZY4t.png"
-        Menu.CurrentTheme = "Gray"
-    elseif themeLower == "pink" then
-        Menu.Colors.HeaderPink = { r = 255, g = 20, b = 147 }
-        Menu.Colors.SelectedBg = { r = 255, g = 20, b = 147 }
-        Menu.Banner.imageUrl = "https://i.imgur.com/0wsZY4t.png"
-        Menu.CurrentTheme = "pink"
-    else
-        Menu.Colors.HeaderPink = { r = 0, g = 221, b = 255 }
-        Menu.Colors.SelectedBg = { r = 0, g = 221, b = 255 }
-        Menu.Banner.imageUrl = "https://i.imgur.com/0wsZY4t.png"
-        Menu.CurrentTheme = "Blue"
-    end
+    Menu.Banner.enabled = false
 
-    if Menu.Banner.enabled and Menu.Banner.imageUrl then
-        Menu.LoadBannerTexture(Menu.Banner.imageUrl)
+    if themeLower == "arcane" then
+        Menu.Colors.HeaderPink = { r = 110, g = 60, b = 220 }
+        Menu.Colors.SelectedBg = { r = 110, g = 60, b = 220 }
+        Menu.Colors.BackgroundDark = { r = 10, g = 11, b = 18 }
+        Menu.Colors.FooterBlack = { r = 8, g = 9, b = 15 }
+        Menu.CurrentTheme = "Arcane"
+    elseif themeLower == "cyber" then
+        Menu.Colors.HeaderPink = { r = 0, g = 210, b = 200 }
+        Menu.Colors.SelectedBg = { r = 0, g = 210, b = 200 }
+        Menu.Colors.BackgroundDark = { r = 5, g = 14, b = 20 }
+        Menu.Colors.FooterBlack = { r = 4, g = 10, b = 16 }
+        Menu.CurrentTheme = "Cyber"
+    elseif themeLower == "crimson" then
+        Menu.Colors.HeaderPink = { r = 220, g = 38, b = 80 }
+        Menu.Colors.SelectedBg = { r = 220, g = 38, b = 80 }
+        Menu.Colors.BackgroundDark = { r = 14, g = 8, b = 10 }
+        Menu.Colors.FooterBlack = { r = 10, g = 6, b = 8 }
+        Menu.CurrentTheme = "Crimson"
+    elseif themeLower == "gold" then
+        Menu.Colors.HeaderPink = { r = 212, g = 170, b = 40 }
+        Menu.Colors.SelectedBg = { r = 212, g = 170, b = 40 }
+        Menu.Colors.BackgroundDark = { r = 12, g = 10, b = 5 }
+        Menu.Colors.FooterBlack = { r = 9, g = 8, b = 4 }
+        Menu.CurrentTheme = "Gold"
+    elseif themeLower == "gray" then
+        Menu.Colors.HeaderPink = { r = 150, g = 150, b = 165 }
+        Menu.Colors.SelectedBg = { r = 150, g = 150, b = 165 }
+        Menu.Colors.BackgroundDark = { r = 12, g = 12, b = 14 }
+        Menu.Colors.FooterBlack = { r = 9, g = 9, b = 11 }
+        Menu.CurrentTheme = "Gray"
+    else
+        Menu.Colors.HeaderPink = { r = 110, g = 60, b = 220 }
+        Menu.Colors.SelectedBg = { r = 110, g = 60, b = 220 }
+        Menu.Colors.BackgroundDark = { r = 10, g = 11, b = 18 }
+        Menu.Colors.FooterBlack = { r = 8, g = 9, b = 15 }
+        Menu.CurrentTheme = "Arcane"
     end
 end
 
 Menu.Position = {
-    x = 50,
-    y = 170,
-    width = 360,
-    itemHeight = 34,
-    mainMenuHeight = 26,
-    headerHeight = 100,
-    footerHeight = 26,
+    x = 40,
+    y = 140,
+    width = 380,
+    itemHeight = 38,
+    mainMenuHeight = 32,
+    headerHeight = 86,
+    footerHeight = 30,
     footerSpacing = 5,
-    mainMenuSpacing = 5,
-    footerRadius = 4,
-    itemRadius = 4,
-    scrollbarWidth = 12,
-    scrollbarPadding = 3,
-    headerRadius = 6
+    mainMenuSpacing = 4,
+    footerRadius = 8,
+    itemRadius = 6,
+    scrollbarWidth = 3,
+    scrollbarPadding = 6,
+    headerRadius = 10
 }
-Menu.DefaultScaleMultiplier = 1.16
+Menu.DefaultScaleMultiplier = 1.12
 Menu.Scale = Menu.DefaultScaleMultiplier
 Menu.TextRenderer = "susano"
 Menu.TextFont = 0
@@ -762,8 +769,8 @@ function Menu.DrawNotifications()
             local progress = math.max(0.0, math.min(1.0, remaining / lifeSpan))
             local progressFillWidth = math.max(0, progressWidth * progress)
 
-            local bgR, bgG, bgB = 0.08, 0.09, 0.11
-            local borderR, borderG, borderB = 0.18, 0.20, 0.24
+            local bgR, bgG, bgB = 0.06, 0.06, 0.10
+            local borderR, borderG, borderB = 0.22, 0.14, 0.40
             local accentR, accentG, accentB = Menu.Colors.SelectedBg.r / 255.0, Menu.Colors.SelectedBg.g / 255.0, Menu.Colors.SelectedBg.b / 255.0
 
             if notification.kind == "success" then
@@ -843,25 +850,90 @@ function Menu.DrawHeader()
     local width = scaledPos.width - 1
     local height = scaledPos.headerHeight
     local radius = scaledPos.headerRadius
-    local bannerHeight = Menu.Banner.height * scale
 
-    if Menu.Banner.enabled then
-        if Menu.bannerTexture and Menu.bannerTexture > 0 and Susano and Susano.DrawImage then
-            
-            Susano.DrawImage(Menu.bannerTexture, x, y, width, bannerHeight, 1, 1, 1, 1, 0)
-        else
-            Menu.DrawRect(x, y, width, height, Menu.Colors.HeaderPink.r, Menu.Colors.HeaderPink.g, Menu.Colors.HeaderPink.b, 255)
+    local bgR = Menu.Colors.BackgroundDark.r / 255.0
+    local bgG = Menu.Colors.BackgroundDark.g / 255.0
+    local bgB = Menu.Colors.BackgroundDark.b / 255.0
 
-            local logoX = x + width / 2 - 12
-            local logoY = y + height / 2 - 20
-            Menu.DrawText(logoX, logoY, "P", 44, 1.0, 1.0, 1.0, 1.0)
+    local acR = Menu.Colors.SelectedBg.r / 255.0
+    local acG = Menu.Colors.SelectedBg.g / 255.0
+    local acB = Menu.Colors.SelectedBg.b / 255.0
+
+    -- fondo header con gradiente sutil
+    if Susano and Susano.DrawRectFilled then
+        Susano.DrawRectFilled(x, y, width, height, bgR + 0.06, bgG + 0.04, bgB + 0.10, 1.0, radius)
+        -- capa de gradiente hacia abajo (mas oscuro abajo)
+        local gradSteps = 20
+        local stepH = height / gradSteps
+        for i = 0, gradSteps - 1 do
+            local t = i / (gradSteps - 1)
+            local a = t * 0.18
+            Susano.DrawRectFilled(x, y + i * stepH, width, math.ceil(stepH + 1), 0.0, 0.0, 0.0, a, 0)
         end
     else
-        Menu.DrawRect(x, y, width, height, Menu.Colors.HeaderPink.r, Menu.Colors.HeaderPink.g, Menu.Colors.HeaderPink.b, 255)
+        Menu.DrawRect(x, y, width, height, Menu.Colors.BackgroundDark.r + 15, Menu.Colors.BackgroundDark.g + 10, Menu.Colors.BackgroundDark.b + 25, 255)
+    end
 
-        local logoX = x + width / 2 - 12
-        local logoY = y + height / 2 - 20
-        Menu.DrawText(logoX, logoY, "P", 44, 1.0, 1.0, 1.0, 1.0)
+    -- linea de acento superior con glow
+    local accentLineH = math.max(2, 3 * scale)
+    if Susano and Susano.DrawRectFilled then
+        -- glow difuso debajo de la linea
+        Susano.DrawRectFilled(x, y + accentLineH, width, 8 * scale, acR, acG, acB, 0.10, 0)
+        Susano.DrawRectFilled(x, y + accentLineH, width, 4 * scale, acR, acG, acB, 0.06, 0)
+        -- linea principal
+        Susano.DrawRectFilled(x, y, width, accentLineH, acR, acG, acB, 1.0, radius)
+    else
+        Menu.DrawRect(x, y, width, accentLineH, Menu.Colors.SelectedBg.r, Menu.Colors.SelectedBg.g, Menu.Colors.SelectedBg.b, 255)
+    end
+
+    -- titulo con capas de glow
+    local titleText = "ARCANE"
+    local titleSize = 30
+    local titleW = Menu.GetTextWidth(titleText, titleSize)
+    local titleX = x + (width / 2) - (titleW / 2)
+    local titleY = y + (height / 2) - (titleSize * scale * 0.60)
+
+    -- glow exterior (offset sutil, muy transparente)
+    local resolvedTitleSize = titleSize * (Menu.Scale or 1.0)
+    if Susano and Susano.DrawText then
+        Susano.DrawText(titleX - 1, titleY + 1, titleText, resolvedTitleSize, acR, acG, acB, 0.12)
+        Susano.DrawText(titleX + 1, titleY + 1, titleText, resolvedTitleSize, acR, acG, acB, 0.12)
+        Susano.DrawText(titleX, titleY + 1, titleText, resolvedTitleSize, acR, acG, acB, 0.18)
+    end
+    Menu.DrawTextEmphasis(titleX, titleY, titleText, titleSize, acR, acG, acB, 1.0)
+
+    -- subtitulo con corchetes estilizados
+    local subText = "[ " .. string.upper(Menu.CurrentTheme) .. " ]"
+    local subSize = 10
+    local subW = Menu.GetTextWidth(subText, subSize)
+    local subX = x + (width / 2) - (subW / 2)
+    local subY = titleY + (titleSize * scale * 0.92) + (3 * scale)
+    Menu.DrawText(subX, subY, subText, subSize, acR, acG, acB, 0.45)
+
+    -- linea separadora inferior con punto central brillante
+    local sepH = math.max(1, 1 * scale)
+    local sepY = y + height - sepH
+    if Susano and Susano.DrawRectFilled then
+        Susano.DrawRectFilled(x, sepY, width, sepH, acR * 0.3, acG * 0.3, acB * 0.3, 0.6, 0)
+        -- punto central brillante en la linea
+        local dotW = 40 * scale
+        local dotX = x + (width / 2) - (dotW / 2)
+        Susano.DrawRectFilled(dotX, sepY, dotW, sepH, acR, acG, acB, 0.9, sepH / 2)
+    else
+        Menu.DrawRect(x, sepY, width, sepH, Menu.Colors.SelectedBg.r, Menu.Colors.SelectedBg.g, Menu.Colors.SelectedBg.b, 64)
+    end
+
+    -- decoraciones de esquina (pequeños brackets)
+    local cornerSize = 6 * scale
+    local cornerThick = math.max(1, 1 * scale)
+    local cornerAlpha = 0.5
+    if Susano and Susano.DrawRectFilled then
+        -- esquina superior izquierda
+        Susano.DrawRectFilled(x + 8*scale, y + accentLineH + 5*scale, cornerSize, cornerThick, acR, acG, acB, cornerAlpha, 0)
+        Susano.DrawRectFilled(x + 8*scale, y + accentLineH + 5*scale, cornerThick, cornerSize, acR, acG, acB, cornerAlpha, 0)
+        -- esquina superior derecha
+        Susano.DrawRectFilled(x + width - 8*scale - cornerSize, y + accentLineH + 5*scale, cornerSize, cornerThick, acR, acG, acB, cornerAlpha, 0)
+        Susano.DrawRectFilled(x + width - 8*scale - cornerThick, y + accentLineH + 5*scale, cornerThick, cornerSize, acR, acG, acB, cornerAlpha, 0)
     end
 end
 
@@ -1076,7 +1148,7 @@ function Menu.DrawItem(x, itemY, width, itemHeight, item, isSelected)
     local scale = Menu.Scale or 1.0
     
     if item.isSeparator then
-        Menu.DrawRect(x, itemY, width, itemHeight, Menu.Colors.BackgroundDark.r, Menu.Colors.BackgroundDark.g, Menu.Colors.BackgroundDark.b, 50)
+        Menu.DrawRect(x, itemY, width, itemHeight, Menu.Colors.BackgroundDark.r + 6, Menu.Colors.BackgroundDark.g + 6, Menu.Colors.BackgroundDark.b + 10, 200)
 
         if item.separatorText then
             local textY = itemY + itemHeight / 2 - (7 * scale)
@@ -1119,7 +1191,12 @@ function Menu.DrawItem(x, itemY, width, itemHeight, item, isSelected)
         return
     end
 
-    Menu.DrawRect(x, itemY, width, itemHeight, Menu.Colors.BackgroundDark.r, Menu.Colors.BackgroundDark.g, Menu.Colors.BackgroundDark.b, 50)
+    Menu.DrawRect(x, itemY, width, itemHeight, Menu.Colors.BackgroundDark.r + 6, Menu.Colors.BackgroundDark.g + 6, Menu.Colors.BackgroundDark.b + 10, 200)
+
+    -- linea separadora sutil entre items
+    if Susano and Susano.DrawRectFilled then
+        Susano.DrawRectFilled(x + 10, itemY + itemHeight - 1, width - 20, 1, 1.0, 1.0, 1.0, 0.04, 0)
+    end
 
     if isSelected then
         if Menu.SelectorY == 0 then
@@ -1131,7 +1208,7 @@ function Menu.DrawItem(x, itemY, width, itemHeight, item, isSelected)
         if math.abs(Menu.SelectorY - itemY) < 0.5 then
             Menu.SelectorY = itemY
         end
-        
+
         local drawY = Menu.SelectorY
 
         local baseR = (Menu.Colors.SelectedBg and Menu.Colors.SelectedBg.r) and (Menu.Colors.SelectedBg.r / 255.0) or 1.0
@@ -1223,13 +1300,23 @@ function Menu.DrawItem(x, itemY, width, itemHeight, item, isSelected)
             end
         end
 
-        Menu.DrawRect(selectorX, drawY, 3, itemHeight, Menu.Colors.SelectedBg.r, Menu.Colors.SelectedBg.g, Menu.Colors.SelectedBg.b, 255)
+        -- barra lateral con efecto glow (3 capas)
+        local barR = Menu.Colors.SelectedBg.r / 255.0
+        local barG = Menu.Colors.SelectedBg.g / 255.0
+        local barB = Menu.Colors.SelectedBg.b / 255.0
+        if Susano and Susano.DrawRectFilled then
+            Susano.DrawRectFilled(selectorX, drawY, 8, itemHeight, barR, barG, barB, 0.10, 0)
+            Susano.DrawRectFilled(selectorX, drawY, 5, itemHeight, barR, barG, barB, 0.22, 0)
+            Susano.DrawRectFilled(selectorX, drawY, 3, itemHeight, barR, barG, barB, 1.0, 0)
+        else
+            Menu.DrawRect(selectorX, drawY, 3, itemHeight, Menu.Colors.SelectedBg.r, Menu.Colors.SelectedBg.g, Menu.Colors.SelectedBg.b, 255)
+        end
     end
 
-    local textX = x + (16 * scale)
+    local textX = x + (18 * scale)
     local textY = itemY + itemHeight / 2 - (8 * scale)
-    local textSize = 17 * scale
-    Menu.DrawText(textX, textY, item.name, 17, Menu.Colors.TextWhite.r / 255.0, Menu.Colors.TextWhite.g / 255.0, Menu.Colors.TextWhite.b / 255.0, 1.0)
+    local textAlpha = isSelected and 1.0 or 0.65
+    Menu.DrawText(textX, textY, item.name, 17, Menu.Colors.TextWhite.r / 255.0, Menu.Colors.TextWhite.g / 255.0, Menu.Colors.TextWhite.b / 255.0, textAlpha)
 
     if item.type == "toggle" then
         local toggleWidth = 36 * scale
@@ -1255,11 +1342,11 @@ function Menu.DrawItem(x, itemY, width, itemHeight, item, isSelected)
         else
             if Susano and Susano.DrawRectFilled then
                 Susano.DrawRectFilled(toggleX, toggleY, toggleWidth, toggleHeight,
-                    0.2, 0.2, 0.2, 0.95,
+                    0.12, 0.12, 0.16, 0.95,
                     toggleRadius)
             else
                 Menu.DrawRoundedRect(toggleX, toggleY, toggleWidth, toggleHeight,
-                    51, 51, 51, 242,
+                    31, 31, 41, 242,
                     toggleRadius)
             end
         end
@@ -1378,9 +1465,9 @@ function Menu.DrawItem(x, itemY, width, itemHeight, item, isSelected)
             end
         else
             if Susano and Susano.DrawRectFilled then
-                Susano.DrawRectFilled(toggleX, toggleY, toggleWidth, toggleHeight, 0.2, 0.2, 0.2, 0.95, toggleRadius)
+                Susano.DrawRectFilled(toggleX, toggleY, toggleWidth, toggleHeight, 0.12, 0.12, 0.16, 0.95, toggleRadius)
             else
-                Menu.DrawRoundedRect(toggleX, toggleY, toggleWidth, toggleHeight, 51, 51, 51, 242, toggleRadius)
+                Menu.DrawRoundedRect(toggleX, toggleY, toggleWidth, toggleHeight, 31, 31, 41, 242, toggleRadius)
             end
         end
 
@@ -1393,22 +1480,10 @@ function Menu.DrawItem(x, itemY, width, itemHeight, item, isSelected)
             circleX = toggleX + 2
         end
 
-        local isGrayTheme = (Menu.CurrentTheme == "Gray")
-        local circleR, circleG, circleB
-        if isGrayTheme then
-            circleR = 1.0
-            circleG = 1.0
-            circleB = 1.0
-        else
-            circleR = 0.0
-            circleG = 0.0
-            circleB = 0.0
-        end
-
         if Susano and Susano.DrawRectFilled then
-            Susano.DrawRectFilled(circleX, circleY, circleSize, circleSize, circleR, circleG, circleB, 1.0, circleSize / 2)
+            Susano.DrawRectFilled(circleX, circleY, circleSize, circleSize, 1.0, 1.0, 1.0, 1.0, circleSize / 2)
         else
-            Menu.DrawRoundedRect(circleX, circleY, circleSize, circleSize, circleR * 255, circleG * 255, circleB * 255, 255, circleSize / 2)
+            Menu.DrawRoundedRect(circleX, circleY, circleSize, circleSize, 255, 255, 255, 255, circleSize / 2)
         end
 
         if item.options then
@@ -1746,7 +1821,7 @@ function Menu.DrawCategories()
             local isSelected = (categoryIndex == Menu.CurrentCategory)
 
             local itemY = startY + mainMenuHeight + mainMenuSpacing + (displayIndex - 1) * itemHeight
-            Menu.DrawRect(x, itemY, width, itemHeight, Menu.Colors.BackgroundDark.r, Menu.Colors.BackgroundDark.g, Menu.Colors.BackgroundDark.b, 50)
+            Menu.DrawRect(x, itemY, width, itemHeight, Menu.Colors.BackgroundDark.r + 6, Menu.Colors.BackgroundDark.g + 6, Menu.Colors.BackgroundDark.b + 10, 200)
 
             if isSelected then
                 if Menu.CategorySelectorY == 0 then
@@ -1850,15 +1925,33 @@ function Menu.DrawCategories()
                     end
                 end
 
-                Menu.DrawRect(selectorX, drawY, 3, itemHeight, Menu.Colors.SelectedBg.r, Menu.Colors.SelectedBg.g, Menu.Colors.SelectedBg.b, 255)
+                -- barra lateral con glow en categorias
+                local barR = Menu.Colors.SelectedBg.r / 255.0
+                local barG = Menu.Colors.SelectedBg.g / 255.0
+                local barB = Menu.Colors.SelectedBg.b / 255.0
+                if Susano and Susano.DrawRectFilled then
+                    Susano.DrawRectFilled(selectorX, drawY, 8, itemHeight, barR, barG, barB, 0.10, 0)
+                    Susano.DrawRectFilled(selectorX, drawY, 5, itemHeight, barR, barG, barB, 0.22, 0)
+                    Susano.DrawRectFilled(selectorX, drawY, 3, itemHeight, barR, barG, barB, 1.0, 0)
+                else
+                    Menu.DrawRect(selectorX, drawY, 3, itemHeight, Menu.Colors.SelectedBg.r, Menu.Colors.SelectedBg.g, Menu.Colors.SelectedBg.b, 255)
+                end
             end
 
-            local textX = x + 16
+            -- separador sutil entre categorias
+            if Susano and Susano.DrawRectFilled then
+                Susano.DrawRectFilled(x + 10, itemY + itemHeight - 1, width - 20, 1, 1.0, 1.0, 1.0, 0.04, 0)
+            end
+
+            local scale = Menu.Scale or 1.0
+            local textX = x + (18 * scale)
             local textY = itemY + itemHeight / 2 - 8
-            Menu.DrawText(textX, textY, category.name, 17, Menu.Colors.TextWhite.r / 255.0, Menu.Colors.TextWhite.g / 255.0, Menu.Colors.TextWhite.b / 255.0, 1.0)
+            local catTextAlpha = isSelected and 1.0 or 0.65
+            Menu.DrawText(textX, textY, category.name, 17, Menu.Colors.TextWhite.r / 255.0, Menu.Colors.TextWhite.g / 255.0, Menu.Colors.TextWhite.b / 255.0, catTextAlpha)
 
             local chevronX = x + width - 22
-            Menu.DrawText(chevronX, textY, ">", 17, Menu.Colors.TextWhite.r / 255.0, Menu.Colors.TextWhite.g / 255.0, Menu.Colors.TextWhite.b / 255.0, 1.0)
+            local chevronAlpha = isSelected and 0.9 or 0.3
+            Menu.DrawText(chevronX, textY, ">", 14, Menu.Colors.SelectedBg.r / 255.0, Menu.Colors.SelectedBg.g / 255.0, Menu.Colors.SelectedBg.b / 255.0, chevronAlpha)
         end
     end
 
@@ -2035,25 +2128,33 @@ function Menu.DrawFooter()
     local footerHeight = scaledPos.footerHeight
     local footerRounding = scaledPos.footerRadius
 
+    local acR = Menu.Colors.SelectedBg.r / 255.0
+    local acG = Menu.Colors.SelectedBg.g / 255.0
+    local acB = Menu.Colors.SelectedBg.b / 255.0
+    local bgR = Menu.Colors.BackgroundDark.r / 255.0
+    local bgG = Menu.Colors.BackgroundDark.g / 255.0
+    local bgB = Menu.Colors.BackgroundDark.b / 255.0
+
     if Susano and Susano.DrawRectFilled then
         Susano.DrawRectFilled(x, footerY, footerWidth, footerHeight,
-            0.0, 0.0, 0.0, 1.0,
+            bgR + 0.02, bgG + 0.02, bgB + 0.04, 1.0,
             footerRounding)
+        -- linea de acento en la parte superior del footer
+        Susano.DrawRectFilled(x, footerY, footerWidth, 1, acR, acG, acB, 0.35, 0)
     else
         Menu.DrawRoundedRect(x, footerY, footerWidth, footerHeight, 0, 0, 0, 255, footerRounding)
     end
 
     local footerPadding = 15 * scale
-    local footerSize = 13
+    local footerSize = 12
     local scaledFooterSize = footerSize * scale
     local footerTextY = footerY + (footerHeight / 2) - (scaledFooterSize / 2) + (1 * scale)
 
     local footerText = "discord.gg/arcaneservices"
     local currentX = x + footerPadding
 
-    local textWidth = Menu.GetTextWidth(footerText, footerSize)
-
-    Menu.DrawText(currentX, footerTextY, footerText, footerSize, Menu.Colors.TextWhite.r / 255.0, Menu.Colors.TextWhite.g / 255.0, Menu.Colors.TextWhite.b / 255.0, 1.0)
+    -- texto del footer con color de acento tenue
+    Menu.DrawText(currentX, footerTextY, footerText, footerSize, acR, acG, acB, 0.75)
 
     local displayIndex
     local totalItems
@@ -2079,12 +2180,12 @@ function Menu.DrawFooter()
         totalItems = #Menu.Categories - 1
     end
 
-    local posText = string.format("%d/%d", displayIndex, totalItems)
+    local posText = string.format("[%d/%d]", displayIndex, totalItems)
 
     local posWidth = Menu.GetTextWidth(posText, footerSize)
 
     local posX = x + footerWidth - posWidth - footerPadding
-    Menu.DrawText(posX, footerTextY, posText, footerSize, Menu.Colors.TextWhite.r / 255.0, Menu.Colors.TextWhite.g / 255.0, Menu.Colors.TextWhite.b / 255.0, 1.0)
+    Menu.DrawText(posX, footerTextY, posText, footerSize, acR, acG, acB, 0.85)
 end
 
 function Menu.DrawKeySelector(alpha)
